@@ -40,5 +40,8 @@ dbGetQuery(conn, "SELECT performance_group, AVG(yrs_employed), STDDEV(yrs_employ
 	GROUP BY performance_group;"
 )
 ## Top 3 managers by location, sorted first by city and then test score. Ties included
-dbGetQuery(conn, ""
+dbGetQuery(conn, "SELECT city, employee_id, test_score
+           FROM cla_tntlab.datascience_8960_table
+           GROUP BY city, employee_id, test_score
+           ORDER BY city, test_score DESC"
 )
