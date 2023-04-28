@@ -3,7 +3,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(dplyr)
 
 # Data Import and Cleaning
-week13_tbl <- tibble(read.csv(file ="../data/week13.csv"))
+week13_tbl <- tibble(read.csv(file ="../data/week13.csv")) #could also use read_csv from readr in tidyverse, but wanted to do this with just the dplyr package
 
 # Analysis - dplyr
 ## Count of managers
@@ -28,4 +28,4 @@ group_by(week13_tbl, city) %>%
   slice_max(n = 3, 
             order_by = tibble(city, test_score), #tibble made per documentation
             with_ties = TRUE) %>%
-  select(employee_id, city) #add test_score to verify test_score descending order
+  select(employee_id, city, test_score) #remove test_score if instructed

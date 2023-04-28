@@ -45,3 +45,14 @@ dbGetQuery(conn, "WITH added_ranking AS (
            FROM added_ranking
            WHERE ranking <= 3"
 )
+
+# Alternate using DENSE_RANK, delete depending on response!
+dbGetQuery(conn, "WITH added_ranking AS (
+           SELECT *,
+           DENSE_RANK() OVER (PARTITION BY city ORDER BY city, test_score DESC) AS ranking
+           FROM cla_tntlab.datascience_8960_table
+          ) 
+           SELECT city, employee_id, test_score
+           FROM added_ranking
+           WHERE ranking <= 3"
+)
