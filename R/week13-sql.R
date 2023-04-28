@@ -1,7 +1,10 @@
+# Script Settings and Resources
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(keyring)
 library(RMariaDB)
-#keyring password set via notes previously, not saved here per instruction
+
+# Data Import and Cleaning
+## keyring password set via notes previously, not saved here per instruction
 conn <- dbConnect(MariaDB(),
                   user="greco031",
                   password=key_get("latis-mysql","greco031"),

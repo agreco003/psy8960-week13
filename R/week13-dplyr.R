@@ -28,4 +28,5 @@ group_by(week13_tbl, city) %>%
   slice_max(n = 3, 
             order_by = tibble(city, test_score),
             with_ties = TRUE) %>%
-  select(employee_id, city) #add test_score to verify test_score descending order
+  select(employee_id, city) %>% #add test_score to verify test_score descending order
+  print(n = 22) #displaying all results
