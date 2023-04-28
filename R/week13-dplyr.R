@@ -26,7 +26,6 @@ group_by(week13_tbl, performance_group) %>%
 ## Top 3 managers by location, sorted first by city and then test score. Ties included
 group_by(week13_tbl, city) %>%
   slice_max(n = 3, 
-            order_by = tibble(city, test_score),
+            order_by = tibble(city, test_score), #tibble made per documentation
             with_ties = TRUE) %>%
-  select(employee_id, city) %>% #add test_score to verify test_score descending order
-  print(n = 22) #displaying all results
+  select(employee_id, city) #add test_score to verify test_score descending order

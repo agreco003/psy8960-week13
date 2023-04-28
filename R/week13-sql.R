@@ -12,5 +12,33 @@ conn <- dbConnect(MariaDB(),
                   port=3306,
                   ssl.ca = 'mysql_hotel_umn_20220728_interm.cer'
 )
+#Data Frames
 databases_df <- dbGetQuery(conn, "SHOW DATABASES;")
+#Counts
 dbExecute(conn, "USE cla_tntlab;")
+
+# Analysis - SQL
+## Count of Managers
+dbGetQuery(conn,"SELECT COUNT(employee_id) AS manager_count
+          FROM cla_tntlab.datascience_8960_table;"
+)
+
+## Distinct Manager IDs
+dbGetQuery(conn,"SELECT DISTINCT COUNT(employee_id) AS distinct_manager_count
+           FROM cla_tntlab.datascience_8960_table;"
+)
+
+## Number of Managers by city, not hired as managers
+dbGetQuery(conn, "SELECT city, COUNT(employee_id) 
+           FROM cla_tntlab.datascience_8960_table
+           WHERE manager_hire = 'N' 
+           GROUP BY city;"
+)
+## Avg years employed, sd of years employed by performance group. No rounding instructed
+dbGetQuery(conn, "SELECT performance_group, AVG(yrs_employed), STDDEV(yrs_employed)
+	FROM cla_tntlab.datascience_8960_table
+	GROUP BY performance_group;"
+)
+## Top 3 managers by location, sorted first by city and then test score. Ties included
+dbGetQuery(conn, ""
+)
