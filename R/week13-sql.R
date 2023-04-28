@@ -4,7 +4,7 @@ library(RMariaDB)
 conn <- dbConnect(MariaDB(),
                   user="greco031",
                   password=key_get("latis-mysql","greco031"),
-                  host="mysql-prod5.oit.umn.edu",
+                  host="dba-mysql-prd-05.oit.umn.edu",
                   port=3306,
 )
 databases_df <- dbGetQuery(conn, "SHOW DATABASES;")
