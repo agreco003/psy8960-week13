@@ -17,7 +17,7 @@ conn <- dbConnect(MariaDB(),
 ## Count of Managers
 dbGetQuery(conn,"SELECT COUNT(employee_id) AS manager_count
           FROM cla_tntlab.datascience_8960_table;"
-)
+) #dbExecute returns 0 every time  dbExecute(conn,"SELECT COUNT(employee_id) AS manager_count FROM cla_tntlab.datascience_8960_table;")
 
 ## Distinct Manager IDs
 dbGetQuery(conn,"SELECT DISTINCT COUNT(employee_id) AS distinct_manager_count
