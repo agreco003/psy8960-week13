@@ -38,7 +38,7 @@ dbGetQuery(conn, "SELECT performance_group, AVG(yrs_employed), STDDEV(yrs_employ
 ## Top 3 managers by location, sorted first by city and then test score. Ties included
 dbGetQuery(conn, "WITH added_ranking AS (
            SELECT *,
-           DENSE_RANK() OVER (PARTITION BY city ORDER BY city, test_score DESC) AS ranking
+           RANK() OVER (PARTITION BY city ORDER BY city, test_score DESC) AS ranking
            FROM cla_tntlab.datascience_8960_table
           ) 
            SELECT city, employee_id, test_score
