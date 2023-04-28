@@ -1,3 +1,4 @@
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(keyring)
 library(RMariaDB)
 #keyring password set via notes previously, not saved here per instruction
