@@ -12,10 +12,6 @@ conn <- dbConnect(MariaDB(),
                   port=3306,
                   ssl.ca = 'mysql_hotel_umn_20220728_interm.cer'
 )
-#Data Frames
-databases_df <- dbGetQuery(conn, "SHOW DATABASES;")
-#Counts
-dbExecute(conn, "USE cla_tntlab;")
 
 # Analysis - SQL
 ## Count of Managers
@@ -40,8 +36,12 @@ dbGetQuery(conn, "SELECT performance_group, AVG(yrs_employed), STDDEV(yrs_employ
 	GROUP BY performance_group;"
 )
 ## Top 3 managers by location, sorted first by city and then test score. Ties included
-dbGetQuery(conn, "SELECT city, employee_id, test_score
+dbGetQuery(conn, "WITH added_ranking AS (
+           SELECT *,
+           DENSE_RANK() OVER (PARTITION BY city ORDER BY city, test_score DESC) AS ranking
            FROM cla_tntlab.datascience_8960_table
-           GROUP BY city, employee_id, test_score
-           ORDER BY city, test_score DESC"
+          ) 
+           SELECT city, employee_id, test_score
+           FROM added_ranking
+           WHERE ranking <= 3"
 )
