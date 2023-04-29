@@ -28,4 +28,4 @@ group_by(week13_tbl, city) %>%
   slice_max(n = 3, 
             order_by = tibble(city, test_score), #tibble made per documentation
             with_ties = TRUE) %>%
-  select(employee_id, city, test_score) #remove test_score if instructed
+  select(employee_id, city, test_score)
