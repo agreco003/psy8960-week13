@@ -3,7 +3,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(dplyr)
 
 # Data Import and Cleaning
-week13_tbl <- tibble(read.csv(file ="../data/week13.csv")) #could also use read_csv from readr in tidyverse, but wanted to do this with just the dplyr package
+week13_tbl <- tibble(read.csv(file ="../data/week13.csv")) #could also use read_csv from readr in tidyverse, but wanted to do this to ensure dplyr package only
 
 # Analysis - dplyr
 ## Count of managers
