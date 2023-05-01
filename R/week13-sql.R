@@ -19,7 +19,7 @@ dbGetQuery(conn,"SELECT COUNT(employee_id) AS manager_count
           FROM cla_tntlab.datascience_8960_table;"
 )
 ## Distinct Manager IDs
-dbGetQuery(conn,"SELECT DISTINCT COUNT(employee_id) AS distinct_manager_count
+dbGetQuery(conn,"SELECT COUNT(DISTINCT employee_id) AS distinct_manager_count
            FROM cla_tntlab.datascience_8960_table;"
 )
 

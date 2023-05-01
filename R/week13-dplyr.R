@@ -3,6 +3,16 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(dplyr)
 
 # Data Import and Cleaning
+# conn <- dbConnect(MariaDB(),
+#                   user="greco031",
+#                   password=key_get("latis-mysql","greco031"),
+#                   host="dba-mysql-prd-05.oit.umn.edu",
+#                   port=3306,
+#                   ssl.ca = 'mysql_hotel_umn_20220728_interm.cer'
+# ) #could also just do this automatically
+# dbExecute(conn, "USE cla_tntlab;")
+# week13_tbl <- dbGetQuery(conn, "SELECT * FROM cla_tntlab.datascience_8960_table")
+
 week13_tbl <- tibble(read.csv(file ="../data/week13.csv")) #could also use read_csv from readr in tidyverse, but wanted to do this to ensure dplyr package only
 
 # Analysis - dplyr
